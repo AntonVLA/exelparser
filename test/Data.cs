@@ -7,7 +7,7 @@ namespace test
 {
     class Data : IEnumerable
     {
-
+        StrData[]  
         public IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();
