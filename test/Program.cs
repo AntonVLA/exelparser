@@ -1,5 +1,6 @@
 ﻿using System;
-using IronXL;
+using System.Collections.Generic;
+using System.Data.Common;
 
 namespace test
 {
@@ -7,7 +8,7 @@ namespace test
     {
         static void Main(string[] args)
         {
-            
+            IEnumerable<Data> info = 
         }
     }
 }

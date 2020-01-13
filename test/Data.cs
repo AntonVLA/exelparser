@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace test
 {
-    class Data
+    class Data : IEnumerable
     {
-        public int code { set; get; }
-        public int articul { set; get; }
-        public string name { set; get; }
 
-
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
