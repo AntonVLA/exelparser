@@ -8,7 +8,7 @@ namespace test
     {
         static void Main(string[] args)
         {
-            string filepath = "Price_Kompjuternaja_perifеrija_2018_07_10.xlsx";
+            string filepath = "test.xlsx";
             Data data = new Data(filepath);
             foreach(Product product in data)
             {

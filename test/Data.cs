@@ -10,11 +10,11 @@ namespace test
     class Data : IEnumerable
     {
         Product[] productEnumerable;
-        private WorkBook workbook;
+        WorkBook workbook = WorkBook.LoadExcel("test.xlsx");
 
         public Data(string filename)
         {
-            workbook = WorkBook.Load(filename);
+            workbook = WorkBook.Load("test.xlsx");
             WorkSheet sheet = workbook.DefaultWorkSheet;
             IronXL.Range range = sheet["A8:H911"];
             var datatable = range.ToDataTable();
