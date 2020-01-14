@@ -19,12 +19,11 @@ namespace test
             IronXL.Range range = sheet["A8:H911"];
             var datatable = range.ToDataTable();
 
-            for(int i =0; i< datatable.Rows.Count; i++) {
-                var row = datatable.Rows[i];
-
+            foreach (DataRow row in datatable.Rows)
+            {
                 if (int.TryParse(row[0].ToString(), out _))
                 {
-                        productEnumerable.Add(new Product(row));
+                    productEnumerable.Add(new Product(row));
                 }
             }
         }
