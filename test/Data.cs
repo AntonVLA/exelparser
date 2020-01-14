@@ -24,10 +24,7 @@ namespace test
 
                 if (int.TryParse(row[0].ToString(), out _))
                 {
-                    for (int j = 0; j<row.ItemArray.Length; j++)
-                    {
                         productEnumerable.Add(new Product(row));
-                    }
                 }
             }
         }
