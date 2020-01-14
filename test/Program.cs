@@ -12,7 +12,7 @@ namespace test
             string filepath = "test.xlsx";
             Data data = new Data(filepath);
 
-            using (StreamWriter sw = File.CreateText(@"out.txt"))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"../../../out.txt", FileMode.Create, FileAccess.Write)))
             {
                 foreach (Product product in data)
                 {
