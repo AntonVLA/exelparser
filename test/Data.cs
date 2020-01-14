@@ -9,24 +9,23 @@ namespace test
 {
     class Data : IEnumerable
     {
-        Product[] productEnumerable;
-        WorkBook workbook = WorkBook.LoadExcel("test.xlsx");
+        private List<Product> productEnumerable = new List<Product>();
+        private WorkBook workbook;
 
         public Data(string filename)
         {
-            workbook = WorkBook.Load("test.xlsx");
+            workbook = WorkBook.Load(filename);
             WorkSheet sheet = workbook.DefaultWorkSheet;
             IronXL.Range range = sheet["A8:H911"];
             var datatable = range.ToDataTable();
-            foreach (DataRow row in datatable.Rows)
-            {
-                int code;
-                if (int.TryParse(row[1].ToString(), out code))
+            for(int i =0; i< datatable.Rows.Count; i++) {
+                var row = datatable.Rows[i];
+                if (int.TryParse(row[0].ToString(), out _))
                 {
-                    //for (int cell = 1; cell < row)
-                    //{
-
-                    //}
+                    for (int j = 0; j<row.ItemArray.Length; j++)
+                    {
+                        productEnumerable.Add(new Product(row));
+                    }
                 }
             }
         }

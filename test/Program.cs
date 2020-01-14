@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.IO;
 
 namespace test
 {
@@ -10,9 +11,14 @@ namespace test
         {
             string filepath = "test.xlsx";
             Data data = new Data(filepath);
-            foreach(Product product in data)
+
+            using (StreamWriter sw = File.CreateText(@"out.txt"))
             {
-                Console.WriteLine(product.Name);
+                foreach (Product product in data)
+                {
+                    sw.WriteLine($"Код: {product.Code}, Артикул: {product.Articul}, Наименование: {product.Name}, Производитель: {product.Manufacture}, Единица измерения: {product.Price}");
+                    Console.WriteLine($"Код: {product.Code}, Артикул: {product.Articul}, Наименование: {product.Name}, Производитель: {product.Manufacture}, Единица измерения: {product.Price}");
+                }
             }
         }
     }
