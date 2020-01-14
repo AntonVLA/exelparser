@@ -18,8 +18,10 @@ namespace test
             WorkSheet sheet = workbook.DefaultWorkSheet;
             IronXL.Range range = sheet["A8:H911"];
             var datatable = range.ToDataTable();
+
             for(int i =0; i< datatable.Rows.Count; i++) {
                 var row = datatable.Rows[i];
+
                 if (int.TryParse(row[0].ToString(), out _))
                 {
                     for (int j = 0; j<row.ItemArray.Length; j++)
