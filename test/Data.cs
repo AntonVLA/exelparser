@@ -3,21 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
-using IronXL;
+using ExcelDataReader;
+using System.IO;
 
 namespace test
 {
     class Data : IEnumerable
     {
         private List<Product> productEnumerable = new List<Product>();
-        private WorkBook workbook;
 
         public Data(string filename)
         {
-            workbook = WorkBook.Load(filename);
-            WorkSheet sheet = workbook.DefaultWorkSheet;
-            IronXL.Range range = sheet["A8:H911"];
-            var datatable = range.ToDataTable();
+            DataTable datatable;
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            using (var stream = File.Open(filename, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    datatable = reader.AsDataSet().Tables[0];
+                }
+            }
 
             for(int i =0; i< datatable.Rows.Count; i++) {
                 var row = datatable.Rows[i];
