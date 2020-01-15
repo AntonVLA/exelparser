@@ -15,7 +15,7 @@ namespace test
         public Data(string filename)
         {
             DataTable datatable;
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance); //без этой строки падает ошибка
             using (var stream = File.Open(filename, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))

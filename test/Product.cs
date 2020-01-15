@@ -24,7 +24,7 @@ namespace test
             Code = int.Parse(row[0].ToString());
 
             int _;
-            int.TryParse(row[1].ToString(), out _);
+            int.TryParse(row[1].ToString(), out _);//try parse так как простой парс валится на пустом значении
             Articul = _;
 
             Name = row[2].ToString();
