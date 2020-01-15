@@ -24,15 +24,11 @@ namespace test
                 }
             }
 
-            for(int i =0; i< datatable.Rows.Count; i++) {
-                var row = datatable.Rows[i];
-
+            foreach (DataRow row in datatable.Rows)
+            {
                 if (int.TryParse(row[0].ToString(), out _))
                 {
-                    for (int j = 0; j<row.ItemArray.Length; j++)
-                    {
-                        productEnumerable.Add(new Product(row));
-                    }
+                    productEnumerable.Add(new Product(row));
                 }
             }
         }
