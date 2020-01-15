@@ -16,8 +16,9 @@ namespace test
             {
                 foreach (Product product in data)
                 {
-                    sw.WriteLine($"Код: {product.Code}, Артикул: {product.Articul}, Наименование: {product.Name}, Производитель: {product.Manufacture}, Единица измерения: {product.MeasurementUnit}, Розничная цена: {product.Price}.");
-                    Console.WriteLine($"Код: {product.Code}, Артикул: {product.Articul}, Наименование: {product.Name}, Производитель: {product.Manufacture}, Единица измерения: {product.MeasurementUnit}, Розничная цена: {product.Price}.");
+                    string retstr = $"Код: {product.Code}, Артикул: {product.Articul}, Наименование: {product.Name}, Производитель: {product.Manufacture}, Единица измерения: {product.MeasurementUnit}, Розничная цена: {product.Price}.";
+                    sw.WriteLine(retstr);
+                    Console.WriteLine(retstr);
                 }
             }
         }
