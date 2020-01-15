@@ -9,7 +9,7 @@ namespace test
     {
         public int Code { get; set; }
 
-        public int Articul { get; set; }
+        public int? Articul { get; set; }
 
         public string Name { get; set; }
 
@@ -17,20 +17,18 @@ namespace test
 
         public string MeasurementUnit { get; set; }
 
-        public string Price { get; set; }
+        public int? Price { get; set; }
 
         public Product(DataRow row)
         {
             Code = int.Parse(row[0].ToString());
 
-            int _;
-            int.TryParse(row[1].ToString(), out _);//try parse так как простой парс валится на пустом значении
-            Articul = _;
+            if (int.TryParse(row[1].ToString(), out _)) Articul = int.Parse(row[1].ToString());
 
             Name = row[2].ToString();
             Manufacture = row[3].ToString();
             MeasurementUnit = row[4].ToString();
-            Price = row[5].ToString();
+            if (int.TryParse(row[5].ToString(), out _)) Price = int.Parse(row[5].ToString());
         }
     }
 }
