@@ -30,5 +30,10 @@ namespace test
             MeasurementUnit = row[4].ToString();
             if (int.TryParse(row[5].ToString(), out _)) Price = int.Parse(row[5].ToString());
         }
+
+        public override string ToString()
+        {
+            return $"Код: {Code}, Артикул: {Articul}, Наименование: {Name}, Производитель: {Manufacture}, Единица измерения: {MeasurementUnit}, Розничная цена: {Price}.";
+        }
     }
 }
